@@ -25,6 +25,11 @@ import Publisher_Register from './components/pages/Publisher_Register';
 import Types from './components/pages/Types';
 import User_Login from './components/pages/User_Login';
 import User_Register from './components/pages/User_Register';
+import User from './components/pages/User';
+import Deals_Add from './components/pages/Deals_Add';
+import Deals from './components/pages/Deals';
+import Sub_Add from './components/pages/Sub_Add';
+import Subscription from './components/pages/Subscription';
 import { AuthContext } from "./helpers/AuthContext";
 
 
@@ -185,21 +190,28 @@ function App() {
          <Routes>
           
             <Route exact path="/" element={<Landing/>} />
-            <Route exact path="/User_Login" element={<User_Login/>} />
-            <Route exact path="/User_Register" element={<User_Register />} />
+           
             <Route exact path="/Admin_Options" element={<Admin_Options/>} />
             <Route exact path="/Admin_Login" element={<Admin_Login />} />
             <Route exact path="/Admin" element={<Admin/>} />
+            <Route exact path="/Buy/:id" element={<Buy />} />
+              <Route exact path="/Deals_Add/:id" element={<Deals_Add/>}/>
+              <Route exact path="/Deals" element={<Deals/>}/>
             <Route exact path="/Developer_Login" element={<Developer_Login />} />
             <Route exact path="/Developer_Register" element={<Developer_Register />} />
             <Route exact path="/Developer" element={<Developer/>} />
+            <Route exact path="/Game/:id" element={<Game />} />
+            <Route exact path="/Home" element={<Home/>} />
             <Route exact path="/Publisher_Login" element={<Publisher_Login/>} />
             <Route exact path="/Publisher_Register" element={<Publisher_Register />} />
             <Route exact path="/Publisher" element={<Publisher />} />
-            <Route exact path="/Home" element={<Home/>} />
+              <Route exact path="/Sub_Add/:id" element={<Sub_Add/>} />
+              <Route exact path="/Subscription/:id" element={<Subscription/>} />
             <Route exact path="/Types" element={<Types />} />
-            <Route exact path="/Game" element={<Game />} />
-            <Route exact path="/Buy" element={<Buy />} />
+            <Route exact path="/User_Login" element={<User_Login/>} />
+            <Route exact path="/User_Register" element={<User_Register />} />
+              <Route exact path="/User" element={<User/>} />
+            
 
 
          </Routes>

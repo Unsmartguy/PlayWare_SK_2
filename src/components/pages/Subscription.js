@@ -1,19 +1,23 @@
 import Axios from "axios"
 import React from "react";
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { useState } from "react";
 import { useEffect } from "react";
 
 import moment from 'moment';
 import './Card.css';
+import { useNavigate } from "react-router-dom";
+
 
 
 const Subscription= () => {
+    let navigate = useNavigate();
 
     const [subList, setSub] = useState([]);
 
     useEffect(() => {
-        Axios.get('http://localhost:3001/Subscription/').then((response) => {
+        Axios.get('http://localhost:3001/Subscription/',{
+        }).then((response) => {
             setSub(response.data);
         });
     }, []);
@@ -21,6 +25,13 @@ const Subscription= () => {
 
 
     const EnterSubscription=(Sub_id)=>{
+                  
+        Axios.post('http://localhost:3001/subs/operation',{
+            Sub_id:Sub_id
+        });
+      };
+
+      const Subscription=(Sub_id)=>{
                   
         Axios.post('http://localhost:3001/subs/operation',{
             Sub_id:Sub_id
@@ -60,6 +71,7 @@ const Subscription= () => {
                             
                             return(
                                 <div className = 'card-container' key={key}>
+                                    <div onClick={() => { navigate(`/Game/${subscription.id}`);}}>
                                     
                                     <div className='=card-content'>
                                         <div className='card-title'>
@@ -81,6 +93,7 @@ const Subscription= () => {
                                             </p>
                                             
                                         </div>
+                                        </div>
                             
                                     </div>
 
@@ -89,6 +102,13 @@ const Subscription= () => {
                                     <div className='btn'>
                                         <button onClick={()=>{EnterSubscription(subscription.id)}}>
                                                Enter
+                                        </button>
+                                        
+                                    </div>
+
+                                    <div className='btn'>
+                                        <button onClick={()=>{Subscription(subscription.id)}}>
+                                               Add 1 month
                                         </button>
                                         
                                     </div>

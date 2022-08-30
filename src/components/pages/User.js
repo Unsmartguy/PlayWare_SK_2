@@ -2,9 +2,10 @@ import Axios from 'axios';
 import moment from 'moment';
 import React, { useEffect, useState } from "react";
 import './Card.css';
+import { useNavigate } from 'react-router-dom';
 
 const User = () => {
-
+    let navigate = useNavigate();
 
     const [gamesList, setGameList] = useState([]);
    
@@ -31,17 +32,8 @@ const User = () => {
         
         Axios.post('http://localhost:3001/game/operation',{
             id:game_id, 
-            ArrivalDate:ArrivalDate,
-            DelistDate:DelistDate
-        });
-      };
-
-      const EnterSub=(sub_id)=>{
-        
-        Axios.post('http://localhost:3001/sub/operation',{
-            id:sub_id, 
-            ArrivalDate:ArrivalDate,
-            DelistDate:DelistDate
+            //ArrivalDate:ArrivalDate,
+            //DelistDate:DelistDate
         });
       };
 
@@ -131,7 +123,7 @@ const User = () => {
                 <br></br>
 
           
-                <h1 align="center">    List of All Games </h1>
+                <h1 align="center">    Subscriptions </h1>
                 <hr></hr>
                 <br></br>
 
@@ -143,7 +135,7 @@ const User = () => {
                         subList.map((sub, key)=> {
                             
                             return(
-                                <div className = 'card-container' key={key} onClick={()=>{EnterSub(sub.id)}}> 
+                                <div className = 'card-container' key={key} onClick={() => { navigate(`/Subscription/${sub.id}`);}}> 
                                     <div className='image-container' >
                                         
                                     <img src={sub.img_src} alt={sub.name} height="250px" width="290px" border="0" />

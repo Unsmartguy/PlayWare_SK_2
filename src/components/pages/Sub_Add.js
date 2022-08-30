@@ -2,9 +2,10 @@ import Axios from 'axios';
 import moment from 'moment';
 import React, { useEffect, useState } from "react";
 import './Card.css';
+import { useParams } from 'react-router-dom';
 
 const Sub_Add = () => {
-
+    let {id} = useParams();
 
     const [gamesList, setGameList] = useState([]);
     const [ArrivalDate, setArrivalDate] = useState();
@@ -12,7 +13,7 @@ const Sub_Add = () => {
    
 
     useEffect(() => {
-        Axios.get(`http://localhost:3001/games/`).then((response) => {
+        Axios.get(`http://localhost:3001/games/`,{id:id}).then((response) => {
             setGameList(response.data);
         });
 
@@ -91,13 +92,13 @@ const Sub_Add = () => {
                                     <input type="integer" id="updateInput" onChange={(e)=>{setDelistDate(e.target.value)}}></input>
                             
                                     <div className='btn'>
-                                        <button onClick={()=>{AddGame(publisher.id,publisher.state)}}>
+                                        <button onClick={()=>{AddGame(game.id)}}>
                                                Add
                                         </button>
                                         
                                     </div>
                                     <div className='btn'>
-                                        <button onClick={()=>{Delist(publisher.id,publisher.state)}}>
+                                        <button onClick={()=>{Delist(game.id)}}>
                                                Delete
                                         </button>
                                         

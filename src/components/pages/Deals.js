@@ -3,17 +3,23 @@ import React from "react";
 import { Link } from "react-router-dom"
 import { useState } from "react";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import moment from 'moment';
 import './Card.css';
 
 
 const Deals= () => {
-
+    let navigate = useNavigate();
+  
+   
     const [DealsList, setDealsList] = useState([]);
 
     useEffect(() => {
-        Axios.get('http://localhost:3001/deals/').then((response) => {
+        Axios.get('http://localhost:3001/deals/',{
+
+        }).then((response) => {
             setDealsList(response.data);
         });
     }, []);
@@ -60,10 +66,10 @@ const Deals= () => {
                             
                             return(
                                 <div className = 'card-container' key={key}>
-                                    
+                                    <div onClick={() => { navigate(`/Game/${deal.id}`);}}>
                                     <div className='=card-content'>
                                         <div className='card-title'>
-                                            <h3>{sdeal.name}</h3>
+                                            <h3>{deal.name}</h3>
                                         </div>
                             
                                         <div className='card-body'>
@@ -84,7 +90,7 @@ const Deals= () => {
                                     </div>
 
                                     <br></br>
-                            
+                                    </div>
                                     <div className='btn'>
                                         <button onClick={()=>{EnterDeal(deal.id)}}>
                                                Enter

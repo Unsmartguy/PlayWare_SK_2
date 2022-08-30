@@ -5,12 +5,15 @@ import { toast } from "react-toastify";
 import { AuthContext } from "../../helpers/AuthContext";
 import './Card.css';
 import moment from "moment";
+import { useParams } from "react-router-dom";
 
 
 
 
 
-const Buy = (id) => {
+const Buy = () => {
+
+  	let {id} = useParams();
     const [rating, setRating] = useState([]);
     const [ratingView, setRatingView] = useState([]);
     const [ReviewList,setReviewList]=useState([]);
@@ -18,19 +21,26 @@ const Buy = (id) => {
     const [Review,setReview]=useState();
 
     useEffect(() => {
-        Axios.get(`http://localhost:3001/AddOns/`).then((response) => {
+        Axios.get(`http://localhost:3001/AddOns/`,{
+            id:id
+        }).then((response) => {
             setAddOnsList(response.data);
         });
     }, []);
 
     useEffect(() => {
-        Axios.get(`http://localhost:3001/AddOns/`).then((response) => {
+        Axios.get(`http://localhost:3001/AddOns/`,
+        {
+            id:id
+        }).then((response) => {
             setReviewList(response.data);
         });
     }, []);
 
     useEffect(() => {
-        Axios.get(`http://localhost:3001/Rating/`).then((response) => {
+        Axios.get(`http://localhost:3001/Rating/`,{
+            id:id
+        }).then((response) => {
             setRatingView(response.data);
         });
     }, []);

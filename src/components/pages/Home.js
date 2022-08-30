@@ -1,11 +1,12 @@
 import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../../helpers/AuthContext";
 import "./Hover.css";
+import { useNavigate } from "react-router-dom";
 
 
 
 const Home = () => {
-
+    let navigate = useNavigate();
     const {authState} = useContext(AuthContext);
 
     useEffect(() => {
@@ -43,8 +44,8 @@ const Home = () => {
                                 <img className="container-fluid" src="https://i.ibb.co/88Vw6Ct/valorant.jpg"  border="0" />   
                                 </div>
                                 <div className="col "> 
-                                    <div className="row mb-2 border hover-container bg-white shadow rounded p-3 mb-3"><img className="container-fluid" src="https://i.ibb.co/88Vw6Ct/valorant.jpg"  border="0" /> </div> 
-                                    <div className="row border hover-container bg-white shadow rounded p-3"><img className="container-fluid" src="https://i.ibb.co/88Vw6Ct/valorant.jpg"  border="0" /> </div> 
+                                    <div className="row mb-2 border hover-container bg-white shadow rounded p-3 mb-3" onClick={() => { navigate(`/Subscription`);}}><img className="container-fluid" src="https://i.ibb.co/88Vw6Ct/valorant.jpg"  border="0" /> </div> 
+                                    <div className="row border hover-container bg-white shadow rounded p-3"  onClick={() => { navigate(`/Deals`);}}><img className="container-fluid" src="https://i.ibb.co/88Vw6Ct/valorant.jpg"  border="0" /> </div> 
                                 </div>  
                             </div>
                         </div>

@@ -2,15 +2,17 @@ import Axios from 'axios';
 import moment from 'moment';
 import React, { useEffect, useState } from "react";
 import './Card.css';
+import { useParams } from 'react-router-dom';
 
 const Deals_Add = () => {
-
+    let {id} = useParams();
 
     const [gamesList, setGameList] = useState([]);
 
    
     useEffect(() => {
-        Axios.get(`http://localhost:3001/games/`).then((response) => {
+        Axios.get(`http://localhost:3001/games/`,{ id:id}).then((response) => {
+           
             setGameList(response.data);
         });
 
@@ -86,13 +88,13 @@ const Deals_Add = () => {
                                    
                             
                                     <div className='btn'>
-                                        <button onClick={()=>{AddGame(publisher.id,publisher.state)}}>
+                                        <button onClick={()=>{AddGame(game.id)}}>
                                                Add
                                         </button>
                                         
                                     </div>
                                     <div className='btn'>
-                                        <button onClick={()=>{Delist(publisher.id,publisher.state)}}>
+                                        <button onClick={()=>{Delist(game.id)}}>
                                                Delete
                                         </button>
                                         
