@@ -19,12 +19,21 @@ const Buy = () => {
     const [ReviewList,setReviewList]=useState([]);
     const [AddOnsList, setAddOnsList] = useState([]);
     const [Review,setReview]=useState();
+    const [game,setGame]=useState();
 
     useEffect(() => {
         Axios.get(`http://localhost:3001/AddOns/`,{
             id:id
         }).then((response) => {
             setAddOnsList(response.data);
+        });
+    }, []);
+
+    useEffect(() => {
+        Axios.get(`http://localhost:3001/Game/`,{
+            id:id
+        }).then((response) => {
+            setGame(response.data);
         });
     }, []);
 
@@ -102,7 +111,7 @@ const AddToWishlist= () => {
 
 
             <div className="row mb-4">
-            <div className="col-lg-12 col-lg-6 border shadow rounded p-3"><img className="container-fluid" src="https://i.ibb.co/88Vw6Ct/valorant.jpg"  border="0" /></div>
+            <div className="col-lg-12 col-lg-6 border shadow rounded p-3"><img className="container-fluid" src={game.img_src}  border="0" /></div>
             </div>
 
             <div className="row">
