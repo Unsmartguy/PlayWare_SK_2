@@ -1,5 +1,6 @@
 import Axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import moment from 'moment';
 import { toast } from "react-toastify";
@@ -7,6 +8,8 @@ import './Card.css';
 
 
 const Admin= () => {
+
+    let navigate = useNavigate();
    // Redeem Code Generator-----
     const sho="Empty";
    const length1=10;
@@ -253,12 +256,12 @@ const Admin= () => {
                         
 
                         <div className="row mb-3">
-                                <div className="col-lg-6 hover-container-b bg-white border shadow rounded p-3 mx-4 " > <img className="container-fluid" src="https://i.ibb.co/88Vw6Ct/valorant.jpg"  border="0" />
+                                <div className="col-lg-6 hover-container-b bg-white border shadow rounded p-3 mx-4 " onClick={() => { navigate(`/Home_Select/${1}`);}}> <img className="container-fluid" src="https://i.ibb.co/88Vw6Ct/valorant.jpg"  border="0" />
                                 
                                 </div> 
                                 <div className="col-lg-3"> 
-                                    <div className="row border hover-container bg-white shadow rounded p-3 mb-3" ><img className="container-fluid"  src="https://i.ibb.co/88Vw6Ct/valorant.jpg"  border="0" /></div>
-                                    <div className="row border hover-container bg-white shadow rounded p-3 " ><img className="container-fluid" src="https://i.ibb.co/88Vw6Ct/valorant.jpg"  border="0" /></div>   
+                                    <div className="row border hover-container bg-white shadow rounded p-3 mb-3"  onClick={() => { navigate(`/Home_Select/${2}`);}}><img className="container-fluid"  src="https://i.ibb.co/88Vw6Ct/valorant.jpg"  border="0" /></div>
+                                    <div className="row border hover-container bg-white shadow rounded p-3 " onClick={() => { navigate(`/Home_Select/${3}`);}}><img className="container-fluid" src="https://i.ibb.co/88Vw6Ct/valorant.jpg"  border="0" /></div>   
                                 </div>
                         </div>
 
@@ -274,8 +277,8 @@ const Admin= () => {
                                     </div>  
                                 </div>
                             </div>
-                        <div className="col-lg-3 border hover-container bg-white shadow rounded p-3 mx-1"><img className="container-fluid" src="https://i.ibb.co/88Vw6Ct/valorant.jpg"  border="0" /></div> 
-                            <div className="col-lg-3  border hover-container bg-white shadow rounded p-3 mx-1"><img className="container-fluid" src="https://i.ibb.co/88Vw6Ct/valorant.jpg"  border="0" /></div>  
+                        <div className="col-lg-3 border hover-container bg-white shadow rounded p-3 mx-1" onClick={() => { navigate(`/Home_Select/${4}`);}}><img className="container-fluid" src="https://i.ibb.co/88Vw6Ct/valorant.jpg"  border="0" /></div> 
+                            <div className="col-lg-3  border hover-container bg-white shadow rounded p-3 mx-1" onClick={() => { navigate(`/Home_Select/${5}`);}}><img className="container-fluid" src="https://i.ibb.co/88Vw6Ct/valorant.jpg"  border="0" /></div>  
                         </div>
                     </div>
                  

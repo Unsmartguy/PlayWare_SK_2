@@ -30,6 +30,7 @@ import Deals_Add from './components/pages/Deals_Add';
 import Deals from './components/pages/Deals';
 import Sub_Add from './components/pages/Sub_Add';
 import Subscription from './components/pages/Subscription';
+import Home_Select from './components/pages/Home_Select';
 import { AuthContext } from "./helpers/AuthContext";
 
 
@@ -195,8 +196,8 @@ function App() {
             <Route exact path="/Admin_Login" element={<Admin_Login />} />
             <Route exact path="/Admin" element={<Admin/>} />
             <Route exact path="/Buy/:id" element={<Buy />} />
-              <Route exact path="/Deals_Add/:id" element={<Deals_Add/>}/>
-              <Route exact path="/Deals" element={<Deals/>}/>
+            <Route exact path="/Deals_Add/:id" element={<Deals_Add/>}/>
+            <Route exact path="/Deals/:id" element={<Deals/>}/>
             <Route exact path="/Developer_Login" element={<Developer_Login />} />
             <Route exact path="/Developer_Register" element={<Developer_Register />} />
             <Route exact path="/Developer" element={<Developer/>} />
@@ -205,12 +206,13 @@ function App() {
             <Route exact path="/Publisher_Login" element={<Publisher_Login/>} />
             <Route exact path="/Publisher_Register" element={<Publisher_Register />} />
             <Route exact path="/Publisher" element={<Publisher />} />
-              <Route exact path="/Sub_Add/:id" element={<Sub_Add/>} />
-              <Route exact path="/Subscription/:id" element={<Subscription/>} />
+            <Route exact path="/Sub_Add/:id" element={<Sub_Add/>} />
+            <Route exact path="/Subscription/:id" element={<Subscription/>} />
             <Route exact path="/Types" element={<Types />} />
             <Route exact path="/User_Login" element={<User_Login/>} />
             <Route exact path="/User_Register" element={<User_Register />} />
-              <Route exact path="/User" element={<User/>} />
+            <Route exact path="/User" element={<User/>} />
+            <Route exact path="/Home_Select/:id" element={<Home_Select/>} />
             
 
 
