@@ -7,8 +7,37 @@ import './Card.css';
 
 
 const Admin= () => {
+   // Redeem Code Generator-----
+    const sho="Empty";
+   const length1=10;
+   const [vari, setVari] = useState(sho);
+   const [value, setValue] = useState();
+    const Generate=(length)=>{
+        var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * 
+ charactersLength));
+   }
+   setVari(result); 
+      };
 
+      const Redeem=()=>{
+                  
+        Axios.post('http://localhost:3001/Redeem',{
+            value:value,
+            vari:vari
+        }).then((response) => {
+            if(!response.data.error)
+                toast.success("Subscription Added");
+        });
 
+        setVari(sho);
+    
+      };
+
+   //----------------   
 
     const [gamesList, setGameList] = useState([]);
     const [publisherList, setPublisher] = useState([]);
@@ -77,13 +106,13 @@ const Admin= () => {
 
 
     const acceptRemoveRequest=(game_id,state)=>{
-        if(state==10)
+        if(state===10)
             state=2
-        if(state==8)
+        if(state===8)
             state=5
-        if(state==6)
+        if(state===6)
             state=5
-        if(state==3) 
+        if(state===3) 
             state=2           
         Axios.put('http://localhost:3001/games/updateStatus',{
             game_id:game_id, 
@@ -95,13 +124,13 @@ const Admin= () => {
     };
 
     const storeGame=(game_id,state)=>{
-        if(state==10)
+        if(state===10)
             state=11
-        if(state==8)
+        if(state===8)
             state=9
-        if(state==6)
+        if(state===6)
             state=7
-        if(state==3)
+        if(state===3)
             state=4
         Axios.put('http://localhost:3001/games/updateStatus',{
             game_id:game_id, 
@@ -115,13 +144,13 @@ const Admin= () => {
     };
 
     const removeFromStore=(game_id,state)=>{
-        if(state==11)
+        if(state===11)
             state=10
-        if(state==9)
+        if(state===9)
             state=8
-        if(state==7)
+        if(state===7)
             state=6
-        if(state==4)
+        if(state===4)
             state=3
         Axios.put('http://localhost:3001/games/updateStatus',{
             game_id:game_id, 
@@ -199,11 +228,29 @@ const Admin= () => {
         <div className="container">
             <div className="py-4">
 
+
+
+
+            <div className="col-lg-6 container-fluid bg-white border shadow rounded p-3">
+                    <div className="row border shadow rounded p-3">
+                        <div className="col-lg-8"><h4 >Rideem Code:<b> {vari}</b></h4></div>
+                        <div className="col-lg-4"><input className="border-5  rounded" type="integer" id="updateInput" placeholder="0" onChange={(e)=>{setValue(e.target.value)}}></input></div>
+                    </div>
+                    <div className='btn'> <button type="submit" onClick={()=> {Generate(length1);}}>Generate</button></div>
+                    <div className='btn'> <button  type="submit" onClick={()=> {Redeem();}}>Active This Redeem</button></div>
+            </div>
+
+
+
+
                 <div className=" row">
 
                     <div className="col-lg-1"></div>
 
                     <div className="col-lg-11 rounded p-3 p-3">
+
+
+                        
 
                         <div className="row mb-3">
                                 <div className="col-lg-6 hover-container-b bg-white border shadow rounded p-3 mx-4 " > <img className="container-fluid" src="https://i.ibb.co/88Vw6Ct/valorant.jpg"  border="0" />
@@ -305,7 +352,7 @@ const Admin= () => {
                                                 <br></br>
 
                                                 {
-                                                    (game.status != "Stored") ?
+                                                    (game.status !== "Stored") ?
                                                     <>
 
                                                         <b>Dev's cut :- </b>  
@@ -327,7 +374,7 @@ const Admin= () => {
                                                             
                                                         </div>
                                                         {
-                                                            (game.state == 10 || game.state == 8 || game.state == 6) &&
+                                                            (game.state === 10 || game.state === 8 || game.state === 6) &&
                                                             <div className='btn'>
                                                                 <button onClick={()=>{acceptRemoveRequest(game.game_id,game.state)}}>
                                                                 <b>Accept Remove Request</b>
@@ -547,7 +594,7 @@ const Admin= () => {
 
                                                         <br></br>
                                                         {
-                                                            user.status == "Registered" ?
+                                                            user.status === "Registered" ?
                                                             <div className='btn'>
                                                                 <button onClick={()=>{banUser(user.user_id)}}>
                                                                     <b> Ban this user </b>

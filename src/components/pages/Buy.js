@@ -14,7 +14,7 @@ import { useParams } from "react-router-dom";
 const Buy = () => {
 
   	let {id} = useParams();
-    const [rating, setRating] = useState([]);
+    const [rating, setRating] = useState(5);
     const [ratingView, setRatingView] = useState([]);
     const [ReviewList,setReviewList]=useState([]);
     const [AddOnsList, setAddOnsList] = useState([]);
@@ -106,10 +106,10 @@ const AddToWishlist= () => {
             </div>
 
             <div className="row">
-                <div className="col-lg-12 col-lg-6 border shadow rounded p-3">
+                <div className="col-lg-12   rounded p-3">
                 <div className="row">
-                        <div className=" col-lg-6 border shadow rounded p-3">
-                                                    <div className='btn border shadow rounded mb-2' >
+                        <div className=" col-lg-5 border shadow rounded p-3 mx-4">
+                                                    <div className='btn border shadow rounded mb-4' >
                                                         <button  type="submit" onClick={ () => 
                                                             Buy()} >
                                                             <b>
@@ -128,10 +128,23 @@ const AddToWishlist= () => {
                                                 
                                                      </div>
                         </div>
-                        <div className=" col-lg-6 border shadow rounded p-3">
-                        <input type="name" className="form-control mb-1 border shadow rounded" id="floatingInput" placeholder="name@example.com"   onChange={(event) => {
+                        <div className=" col-lg-1 p-3 "></div>
+                        <div className=" col-lg-5 border shadow rounded p-3 mx-4">
+                        <div className="border shadow rounded mb-3">Rating: {ratingView}</div> 
+
+
+<div className="row mb-2"> 
+    <div className="col-lg-10"><input type="range" class="form-range" min="0" max="5" step="1" id="customRange3"  onChange={(event) => {
         setRating(event.target.value);
-      }}></input>   
+      }}></input></div>
+    <div className="col-lg-2"> {rating}</div>
+</div>
+
+
+
+
+                      
+     
                                                      <div className='btn border shadow rounded' >
                                                         <button  type="submit" onClick={ () => 
                                                             SubmitRating()} >
@@ -142,7 +155,7 @@ const AddToWishlist= () => {
                                                         
                                                 
                                                      </div>   
-                                                     <div className="border shadow rounded">Rating: {ratingView}</div>      
+                                                         
                         </div>  
                 </div>
             </div>
